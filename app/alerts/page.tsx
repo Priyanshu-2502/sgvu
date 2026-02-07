@@ -406,7 +406,7 @@ export default function AlertsPage() {
               </CardContent>
             </Card>
 
-            <Card className="mb-6">
+            {/* <Card className="mb-6">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-destructive" />
@@ -486,9 +486,9 @@ export default function AlertsPage() {
                   <div className="text-sm">No alerts match the current filter criteria.</div>
                 )}
               </CardContent>
-            </Card>
+            </Card> */}
 
-            {/* Distribution & Response Time Charts */}
+            {/* Distribution & Response Time Charts
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               <Card>
                 <CardHeader>
@@ -536,9 +536,9 @@ export default function AlertsPage() {
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
 
-            {/* Emergency Response Protocols */}
+            {/* Emergency Response Protocols
             <Card className="mb-8">
               <CardHeader>
                 <CardTitle>Emergency Response Protocols</CardTitle>
@@ -605,45 +605,9 @@ export default function AlertsPage() {
                   <strong>🔄 System Status:</strong> Online | <strong>Last Updated:</strong> {lastUpdated.toLocaleTimeString()}
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
 
-            {/* Historical Alert Trends */}
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  Historical Alert Trends
-                </CardTitle>
-                <CardDescription>Daily counts by alert level</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={320}>
-                  <LineChart
-                    data={(() => {
-                      const byDate: Record<string, { Critical: number; High: number; Medium: number; Low: number }> = {}
-                      for (const a of alerts) {
-                        const d = (a.last_updated || "").split(" ")[0]
-                        if (!byDate[d]) byDate[d] = { Critical: 0, High: 0, Medium: 0, Low: 0 }
-                        // @ts-ignore
-                        byDate[d][a.alert_level]++
-                      }
-                      return Object.entries(byDate)
-                        .sort((a, b) => a[0].localeCompare(b[0]))
-                        .map(([date, vals]) => ({ date, ...vals }))
-                    })()}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis allowDecimals={false} />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="Critical" stroke="hsl(var(--destructive))" strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="High" stroke="hsl(var(--chart-3))" strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="Medium" stroke="hsl(var(--chart-2))" strokeWidth={2} dot={false} />
-                    <Line type="monotone" dataKey="Low" stroke="hsl(var(--chart-1))" strokeWidth={2} dot={false} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
+          
 
             <Tabs defaultValue="current" className="max-w-7xl mx-auto">
             <TabsList className="grid w-full grid-cols-3">

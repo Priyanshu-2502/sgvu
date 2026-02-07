@@ -38,10 +38,10 @@ export default function Navigation() {
       ]
     } else {
       return [
-        { href: "/", label: "Home", icon: Home },
-        { href: "/about", label: "About", icon: Info },
+          { href: "/", label: "Home", icon: Home },
+          { href: "/alerts", label: "Alerts", icon: AlertCircle },
         { href: "/impacts", label: "Impacts", icon: Activity },
-        { href: "/alerts", label: "Alerts", icon: AlertCircle },
+                { href: "/about", label: "About", icon: Info }
       ]
     }
   }
