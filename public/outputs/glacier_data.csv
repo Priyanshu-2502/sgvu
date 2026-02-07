@@ -1,0 +1,25 @@
+id,name,latitude,longitude,region,risk_score,temperature,alert_level,last_updated
+GL001,Imja Glacier Lake,27.9033,86.923,Himalayas,7.2,-12.1,High,2025-09-27 23:46:58
+GL002,Thorthormi Glacier,27.9667,89.7333,Himalayas,6.9,-3.6,High,2025-09-27 23:10:58
+GL003,Lugge Glacier,27.8833,86.6167,Himalayas,9.2,-6.3,Critical,2025-09-28 00:26:58
+GL004,Raphstreng Glacier,27.7167,90.4833,Himalayas,7.3,-10.7,High,2025-09-28 00:32:58
+GL005,Tsho Rolpa Lake,27.8667,86.4833,Himalayas,6.9,-14.8,High,2025-09-27 23:51:58
+GL006,Dig Tsho Lake,27.9167,86.5167,Himalayas,7.0,-10.1,High,2025-09-27 23:40:58
+GL007,Mont Blanc Glacier,45.8326,6.8652,Alps,4.8,-4.4,Medium,2025-09-28 00:39:58
+GL008,Mer de Glace,45.9097,6.9236,Alps,6.2,-1.2,High,2025-09-28 00:20:58
+GL009,Aletsch Glacier,46.4833,8.0333,Alps,6.4,-3.6,High,2025-09-27 23:35:58
+GL010,Rhone Glacier,46.6103,8.3883,Alps,6.3,-6.4,High,2025-09-27 23:32:58
+GL011,Grindelwald Glacier,46.5833,8.0333,Alps,5.7,-1.0,Medium,2025-09-27 23:15:58
+GL012,Pastoruri Glacier,-9.9167,-77.2167,Andes,7.6,-10.5,High,2025-09-27 23:28:58
+GL013,Huayna Potosi,-16.2667,-68.1333,Andes,5.6,-6.6,Medium,2025-09-27 23:03:58
+GL014,Quelccaya Ice Cap,-13.9333,-70.8333,Andes,6.6,-9.4,High,2025-09-28 00:20:58
+GL015,Perito Moreno,-50.4667,-73.0333,Andes,6.8,-6.0,High,2025-09-27 23:47:58
+GL016,Upsala Glacier,-49.8833,-73.3,Andes,6.6,-11.3,High,2025-09-27 23:33:58
+GL017,Exit Glacier,60.1917,-149.6361,Alaska,5.3,-7.4,Medium,2025-09-27 23:32:58
+GL018,Mendenhall Glacier,58.4167,-134.5333,Alaska,3.1,-11.4,Low,2025-09-28 00:04:58
+GL019,Muir Glacier,58.8333,-136.0,Alaska,4.3,-13.5,Medium,2025-09-28 00:00:58
+GL020,Columbia Glacier,61.2,-147.0,Alaska,5.9,-14.8,Medium,2025-09-27 23:31:58
+GL021,Athabasca Glacier,52.2167,-117.2333,Rockies,5.1,-9.3,Medium,2025-09-28 00:11:58
+GL022,Saskatchewan Glacier,52.15,-117.2833,Rockies,4.9,-11.6,Medium,2025-09-27 23:40:58
+GL023,Peyto Glacier,51.7,-116.5333,Rockies,4.9,-10.9,Medium,2025-09-28 00:14:58
+GL024,Bow Glacier,51.6667,-116.4167,Rockies,4.0,-7.4,Low,2025-09-27 22:42:58

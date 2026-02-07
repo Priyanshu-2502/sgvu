@@ -1,0 +1,25 @@
+id,name,latitude,longitude,region,risk_score,temperature,alert_level,last_updated
+GL001,Imja Glacier Lake,27.9033,86.923,Himalayas,7.2,-15.3,High,2025-09-28 00:03:58
+GL002,Thorthormi Glacier,27.9667,89.7333,Himalayas,8.1,-7.4,Critical,2025-09-28 00:30:58
+GL003,Lugge Glacier,27.8833,86.6167,Himalayas,8.7,-12.6,Critical,2025-09-27 22:47:58
+GL004,Raphstreng Glacier,27.7167,90.4833,Himalayas,8.9,-5.3,Critical,2025-09-28 00:24:58
+GL005,Tsho Rolpa Lake,27.8667,86.4833,Himalayas,6.7,-12.4,High,2025-09-27 23:06:58
+GL006,Dig Tsho Lake,27.9167,86.5167,Himalayas,7.0,-6.3,High,2025-09-27 22:45:58
+GL007,Mont Blanc Glacier,45.8326,6.8652,Alps,7.7,0.5,High,2025-09-27 22:51:58
+GL008,Mer de Glace,45.9097,6.9236,Alps,6.4,-4.1,High,2025-09-27 23:08:58
+GL009,Aletsch Glacier,46.4833,8.0333,Alps,6.1,-5.4,High,2025-09-28 00:08:58
+GL010,Rhone Glacier,46.6103,8.3883,Alps,5.9,3.2,Medium,2025-09-27 23:26:58
+GL011,Grindelwald Glacier,46.5833,8.0333,Alps,5.9,-0.1,Medium,2025-09-27 23:06:58
+GL012,Pastoruri Glacier,-9.9167,-77.2167,Andes,5.8,-11.2,Medium,2025-09-27 23:36:58
+GL013,Huayna Potosi,-16.2667,-68.1333,Andes,8.0,-10.5,High,2025-09-27 22:59:58
+GL014,Quelccaya Ice Cap,-13.9333,-70.8333,Andes,7.2,-12.4,High,2025-09-27 23:04:58
+GL015,Perito Moreno,-50.4667,-73.0333,Andes,6.4,-8.0,High,2025-09-27 23:46:58
+GL016,Upsala Glacier,-49.8833,-73.3,Andes,5.8,-7.3,Medium,2025-09-27 23:51:58
+GL017,Exit Glacier,60.1917,-149.6361,Alaska,4.8,-6.9,Medium,2025-09-27 23:14:58
+GL018,Mendenhall Glacier,58.4167,-134.5333,Alaska,6.4,-18.4,High,2025-09-27 23:47:58
+GL019,Muir Glacier,58.8333,-136.0,Alaska,4.3,-13.7,Medium,2025-09-27 23:53:58
+GL020,Columbia Glacier,61.2,-147.0,Alaska,5.3,-7.9,Medium,2025-09-28 00:14:58
+GL021,Athabasca Glacier,52.2167,-117.2333,Rockies,4.2,-20.0,Medium,2025-09-27 22:41:58
+GL022,Saskatchewan Glacier,52.15,-117.2833,Rockies,5.6,-2.9,Medium,2025-09-27 23:45:58
+GL023,Peyto Glacier,51.7,-116.5333,Rockies,4.5,-16.4,Medium,2025-09-28 00:28:58
+GL024,Bow Glacier,51.6667,-116.4167,Rockies,7.0,-16.9,High,2025-09-27 23:48:58
