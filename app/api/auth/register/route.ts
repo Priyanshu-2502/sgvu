@@ -3,17 +3,14 @@ import { NextResponse } from 'next/server'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    // Frontend sends: name, email, phone, password, otp
-    
-    // Default lat/lon if missing (to avoid errors if frontend isn't updated yet)
-    // We will update frontend to send them next.
+
     const payload = {
-        email: body.email,
-        password: body.password,
-        phone: body.phone,
-        full_name: body.name,
-        latitude: body.latitude || 0.0,
-        longitude: body.longitude || 0.0
+      email: body.email,
+      password: body.password,
+      phone: body.phone,
+      name: body.name, // matches Prisma User.name
+      latitude: body.latitude ?? 0.0,
+      longitude: body.longitude ?? 0.0,
     }
 
     const res = await fetch('http://localhost:8001/api/v1/auth/register', {
@@ -25,12 +22,21 @@ export async function POST(request: Request) {
     const data = await res.json()
 
     if (!res.ok) {
-      return NextResponse.json({ error: data.detail || 'Registration failed' }, { status: res.status })
+      const errorMessage =
+        data?.detail || data?.message || data?.error || 'Registration failed'
+
+      return NextResponse.json(
+        { error: errorMessage },
+        { status: res.status }
+      )
     }
 
     return NextResponse.json({ success: true, user: data })
 
   } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json(
+      { error: error.message || 'Server error' },
+      { status: 500 }
+    )
   }
 }

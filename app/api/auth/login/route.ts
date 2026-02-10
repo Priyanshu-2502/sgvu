@@ -1,58 +1,46 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json()
-    const { email, password } = body
+    const { email, password } = await req.json();
 
-    // Convert to Form Data for OAuth2
-    const formData = new URLSearchParams()
-    formData.append('username', email)
-    formData.append('password', password)
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
 
-    const res = await fetch('http://localhost:8001/api/v1/auth/login/access-token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formData,
-    })
-
-    const data = await res.json()
-
-    if (!res.ok) {
-      return NextResponse.json({ error: data.detail || 'Login failed' }, { status: res.status })
+    if (!user || !user.passwordHash) {
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 401 }
+      );
     }
 
-    // Fetch user details
-    const userRes = await fetch('http://localhost:8001/api/v1/auth/me', {
-      headers: {
-        'Authorization': `Bearer ${data.access_token}`
-      }
-    })
-    
-    if (userRes.ok) {
-        const userData = await userRes.json()
-        return NextResponse.json({
-            user: {
-                role: 'local',
-                name: userData.full_name || userData.email,
-                email: userData.email,
-                phone: userData.phone,
-                latitude: userData.latitude,
-                longitude: userData.longitude,
-                profile_picture: userData.profile_picture
-            },
-            token: data.access_token
-        })
+    const valid = await bcrypt.compare(password, user.passwordHash);
+
+    if (!valid) {
+      return NextResponse.json(
+        { error: "Invalid credentials" },
+        { status: 401 }
+      );
     }
 
-    return NextResponse.json({ 
-        token: data.access_token,
-        user: { email, role: 'local', name: 'User' } // Fallback
-    })
+    const token = jwt.sign(
+      { userId: user.id, role: user.role },
+      process.env.JWT_SECRET!,
+      { expiresIn: "7d" }
+    );
 
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({
+      message: "Login successful",
+      token,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
   }
 }
