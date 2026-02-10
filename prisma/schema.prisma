@@ -1,9 +1,10 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-generator client {
-  provider = "prisma-client-js"
 }
 
 model User {
@@ -12,31 +13,31 @@ model User {
   passwordHash String?
   name         String?
   phone        String?
-  role         String   @default("user") // admin, user
-  images       Image[]
+  role         String   @default("user")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  images       Image[]
 }
 
 model Image {
   id         String     @id @default(cuid())
-  type       String     // satellite, drone
+  type       String
   filePath   String
   uploaderId String?
-  uploader   User?      @relation(fields: [uploaderId], references: [id])
-  analyses   Analysis[]
   createdAt  DateTime   @default(now())
+  analyses   Analysis[]
+  uploader   User?      @relation(fields: [uploaderId], references: [id])
 }
 
 model Analysis {
   id                String   @id @default(cuid())
   imageId           String
-  image             Image    @relation(fields: [imageId], references: [id])
   ndwiImagePath     String?
   flowPathImagePath String?
   waterPixels       Float?
   volumeEstimateM3  Float?
   createdAt         DateTime @default(now())
+  image             Image    @relation(fields: [imageId], references: [id])
 }
 
 model Otp {
