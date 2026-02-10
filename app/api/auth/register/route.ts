@@ -1,42 +1,31 @@
-import { NextResponse } from 'next/server'
+import bcrypt from "bcryptjs"
+import { prisma } from "@/lib/prisma"
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json()
+export async function POST(req: Request) {
+  const { email, password, name, phone } = await req.json()
 
-    const payload = {
-      email: body.email,
-      password: body.password,
-      phone: body.phone,
-      name: body.name, // matches Prisma User.name
-      latitude: body.latitude ?? 0.0,
-      longitude: body.longitude ?? 0.0,
-    }
-
-    const res = await fetch('http://localhost:8001/api/v1/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-
-    const data = await res.json()
-
-    if (!res.ok) {
-      const errorMessage =
-        data?.detail || data?.message || data?.error || 'Registration failed'
-
-      return NextResponse.json(
-        { error: errorMessage },
-        { status: res.status }
-      )
-    }
-
-    return NextResponse.json({ success: true, user: data })
-
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || 'Server error' },
-      { status: 500 }
-    )
+  if (!email || !password) {
+    return Response.json({ error: "Missing fields" }, { status: 400 })
   }
+
+  // 1️ hash password
+  const passwordHash = await bcrypt.hash(password, 10)
+
+  // 2️ save to passwordHash
+  const user = await prisma.user.create({
+    data: {
+      email,
+      passwordHash,
+      name,
+      phone,
+    },
+  })
+
+  return Response.json({
+    success: true,
+    user: {
+      id: user.id,
+      email: user.email,
+    },
+  })
 }
